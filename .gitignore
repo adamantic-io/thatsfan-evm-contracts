@@ -55,7 +55,6 @@ Thumbs.db
 
 
 node_modules
-.env.example
 coverage
 coverage.json
 typechain
