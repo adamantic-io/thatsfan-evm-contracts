@@ -24,6 +24,18 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract ThatsFanToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, PausableUpgradeable, AccessControlUpgradeable, OwnableUpgradeable {
 
+    /**
+     * @dev Emitted when the operator functionality is disabled by `account`.
+     *      This will happen only once, when the contract owner locks the operator functionality forever.
+     */
+    event OperatorsDisabled(address account);
+
+    /**
+     * @dev Emitted when the pause is lifted by `account`.
+     *      This will happen only once, when the contract owner locks the supply forever.
+     */
+    event SupplyLocked(address account);
+
     /// @dev role to mint additional supply until `supplyLocked` is activated
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
@@ -84,11 +96,13 @@ contract ThatsFanToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradea
     /// @dev allows the owner to enable operator locking (i.e., their ability to transfer tokens around)
     function disableOperators() public onlyOwner {
         operatorLocked = true;
+        emit OperatorsDisabled(msg.sender);
     }
 
     /// @dev allows the owner to lock the supply (i.e., disables minting and burning)
     function disableModifySupply() public onlyOwner {
         supplyLocked = true;
+        emit SupplyLocked(msg.sender);
     }
 
     /// @dev allows operators to unpause the contract
