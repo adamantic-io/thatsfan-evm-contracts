@@ -8,13 +8,13 @@ import "tsconfig-paths/register";
 
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.18",
+  solidity: "0.8.21",
 };
 
 export default config;
 
 module.exports = {
-  solidity: "0.8.18",
+  solidity: "0.8.21",
   networks: {
     mumbai: {
       url: Config.alchemy.url,

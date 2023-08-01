@@ -1,7 +1,7 @@
 // contracts/ThatsFanToken.sol
 // SPDX-License-Identifier: Apache-2.0
 // Developer: Adamantic Development Team <dev@adamantic.io>
-pragma solidity ^0.8.9;
+pragma solidity 0.8.21;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20BurnableUpgradeable.sol";
